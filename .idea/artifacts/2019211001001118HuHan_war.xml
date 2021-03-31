@@ -1,14 +1,12 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="2019211001001118HuHan:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <properties id="maven-jee-properties">
-      <options>
-        <module>2019211001001118HuHan</module>
-        <packaging>war</packaging>
-      </options>
-    </properties>
-    <root id="archive" name="HuHan2019211001001118-1.0-SNAPSHOT.war">
+  <artifact type="exploded-war" name="2019211001001118HuHan:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/2019211001001118HuHan_war</output-path>
+    <root id="root">
       <element id="artifact" artifact-name="2019211001001118HuHan:war exploded" />
+      <element id="module-source" name="2019211001001118HuHan" />
+      <element id="module-output" name="2019211001001118HuHan" />
+      <element id="javaee-facet-resources" facet="2019211001001118HuHan/web/Web" />
+      <element id="javaee-facet-classes" facet="2019211001001118HuHan/web/Web" />
     </root>
   </artifact>
 </component>
