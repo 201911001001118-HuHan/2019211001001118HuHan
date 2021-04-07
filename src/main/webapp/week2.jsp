@@ -7,8 +7,8 @@
 <body>
 <a href="index.jsp">Get home page</a>
 <form method="post">
-    Name:HuangZhiCheng<br/>
-    ID:2019211001001120<br/>
+    name:huhan<br/>
+    ID:2019211001001118<br/>
     Date and Time:<%= new Date()%>
     <br/>
     <input type="submit" value="Send data to sever">
