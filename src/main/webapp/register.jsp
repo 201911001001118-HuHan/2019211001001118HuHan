@@ -9,6 +9,7 @@
 
 <%@include file="header.jsp"%>
 <form method="post" action="register">
+    id<input type="text" name="id"/><br/>
     username<input type=="text" name="username"/><br/>
     password<input type=="password" name="password"/><br/>
     Email<input type=="text" name="email"/><br/>

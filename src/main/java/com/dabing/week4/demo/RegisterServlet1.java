@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 @WebServlet(
-        urlPatterns = {"/register"},
+        urlPatterns = {"/register1"},
         initParams = {
                 @WebInitParam(name = "driver",value = "com.microsoft.sqlserver.jdbc.SQLServerDriver"),
                 @WebInitParam(name = "url",value = "jdbc:sqlserver://localhost:1433; DatabaseName=userdb"),

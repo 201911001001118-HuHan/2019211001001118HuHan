@@ -20,7 +20,7 @@ import java.io.Writer;
         },loadOnStartup = 1
 )
 public class JDBCDemoServlet extends HttpServlet {
-    Connection con = null;
+    Connection con1 = null;
     @Override
     public void init() throws ServletException{
 //        String driver ="com.microsoft.sqlserver.jdbc.SQLServerDriver";
@@ -35,8 +35,8 @@ public class JDBCDemoServlet extends HttpServlet {
         try {
             Class.forName(driver);
             //注册驱动
-            con = DriverManager.getConnection(url,username,password);
-            System.out.println("init()-->"+con);
+            con1 = DriverManager.getConnection(url,username,password);
+            System.out.println("init()-->"+con1);
         }catch (ClassNotFoundException | SQLException e) { //SQLException异常
             e.printStackTrace();
         }
@@ -46,7 +46,7 @@ public class JDBCDemoServlet extends HttpServlet {
         String sql = "select * from usertable";
         Writer writer = response.getWriter();
         try {
-            ResultSet rs = con.createStatement().executeQuery(sql);
+            ResultSet rs = con1.createStatement().executeQuery(sql);
             while (rs.next()){
                 writer.write(rs.getInt("id")+" ");
                 writer.write(rs.getString("username")+" ");
@@ -70,7 +70,7 @@ public class JDBCDemoServlet extends HttpServlet {
     public void destroy(){
         super.destroy();
         try {
-            con.close();
+            con1.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -7,10 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%@include file="header.jsp"%>
 <head>
     <title>login</title>
 </head>
-<%@include file="header.jsp"%>
+<h1>Login</h1>
+<%
+if(!(request.getAttribute("message")==null)){
+    response.getWriter().write("<h3>"+request.getAttribute("message")+"</h3>");
+}
+%>
 <form method="post" action="login">
     UserName:<input type="text" name="username"><br/>
     Password:<input type="text" name="password"><br/>

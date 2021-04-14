@@ -4,51 +4,84 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <servlet>
-        <servlet-name>ConfigDemoServlet</servlet-name>
-        <servlet-class>com.dabing.week4.demo.ConfigDemoServlet</servlet-class>
-        <init-param>
-            <param-name>name</param-name>
-            <param-value>HuHan</param-value>
-        </init-param>
-        <init-param>
-            <param-name>Studentld</param-name>
-            <param-value>2019211001001118</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-      </servlet>
-    <servlet-mapping>
-        <servlet-name>ConfigDemoServlet</servlet-name>
-        <url-pattern>/config</url-pattern>
-    </servlet-mapping>
+<!--    <servlet>-->
+<!--        <servlet-name>ConfigDemoServlet</servlet-name>-->
+<!--        <servlet-class>com.dabing.week4.demo.ConfigDemoServlet</servlet-class>-->
+<!--        <init-param>-->
+<!--            <param-name>name</param-name>-->
+<!--            <param-value>HuHan</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>Studentld</param-name>-->
+<!--            <param-value>2019211001001118</param-value>-->
+<!--        </init-param>-->
+<!--        <load-on-startup>1</load-on-startup>-->
+<!--      </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>ConfigDemoServlet</servlet-name>-->
+<!--        <url-pattern>/config</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 
 
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>dabing.week3.demo.RegisterServlet</servlet-class>
-        <init-param>
-            <param-name>driver</param-name>
-            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
-        </init-param>
-        <init-param>
-            <param-name>url</param-name>
-            <param-value>jdbc:sqlserver://localhost:1433; DatabaseName=userdb</param-value>
-        </init-param>
-        <init-param>
-            <param-name>username</param-name>
-            <param-value>sa</param-value>
-        </init-param>
-        <init-param>
-            <param-name>password</param-name>
-            <param-value>123456789</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:sqlserver://localhost:1433; DatabaseName=userdb</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123456789</param-value>
+    </context-param>
+
+
+
+        <servlet>
+            <servlet-name>LoginServlet</servlet-name>
+            <servlet-class>com.week5.demo.LoginServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>LoginServlet</servlet-name>
+            <url-pattern>/login</url-pattern>
+        </servlet-mapping>
+
+
+    <listener>
+        <listener-class>com.dabing.week6.demo.JDBCServletContext</listener-class>
+    </listener>
+
+<!--    <servlet>-->
+<!--        <servlet-name>RegisterServlet</servlet-name>-->
+<!--        <servlet-class>dabing.week3.demo.RegisterServlet</servlet-class>-->
+<!--        <init-param>-->
+<!--            <param-name>driver</param-name>-->
+<!--            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>url</param-name>-->
+<!--            <param-value>jdbc:sqlserver://localhost:1433; DatabaseName=userdb</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>username</param-name>-->
+<!--            <param-value>sa</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>password</param-name>-->
+<!--            <param-value>123456789</param-value>-->
+<!--        </init-param>-->
+<!--        <load-on-startup>1</load-on-startup>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>RegisterServlet</servlet-name>-->
+<!--        <url-pattern>/register</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 
 
