@@ -57,6 +57,9 @@
         <listener-class>com.dabing.week6.demo.JDBCServletContext</listener-class>
     </listener>
 
+    <welcome-file-list>
+    <welcome-file>home</welcome-file>
+  </welcome-file-list>
 <!--    <servlet>-->
 <!--        <servlet-name>RegisterServlet</servlet-name>-->
 <!--        <servlet-class>dabing.week3.demo.RegisterServlet</servlet-class>-->

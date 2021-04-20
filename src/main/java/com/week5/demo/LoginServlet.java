@@ -1,4 +1,7 @@
 package com.week5.demo;
+import com.dabing.dao.UserDao;
+import com.dabing.model.User;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -33,41 +36,58 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
         doPost(request,response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ResultSet resultSet;
+        PrintWriter out = response.getWriter();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println(username+password);
-//        PrintWriter writer = response.getWriter();
-        String sql = "select * from usertable where username=? and password=?";
+        UserDao userDao =  new UserDao();
         try {
-            PreparedStatement pre = con.prepareStatement(sql);
-            pre.setString(1, username);
-            pre.setString(2, password);
-            resultSet = pre.executeQuery();
-            if (resultSet.next()) {
-//                writer.println("Login Success!");
-//                writer.println(resultSet.getString("username"));
-//                writer.println(resultSet.getString("password"));
-                request.setAttribute("Id",resultSet.getInt("id"));
-                request.setAttribute("Username",resultSet.getString("username"));
-                request.setAttribute("Password",resultSet.getString("password"));
-                request.setAttribute("Email",resultSet.getString("email"));
-                request.setAttribute("Gender",resultSet.getString("gender"));
-                request.setAttribute("Birthdate",resultSet.getDate("birthdate"));
-                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
+            User user = userDao.findByUsernamePassword(con,username,password);
+            if(user!=null){
+                request.setAttribute("user",user);
+                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
             } else {
-//                writer.println("Login Fail!");
-//                writer.println("The account number or password you entered is wrong");
                 request.setAttribute("message","Usename or Password Error!!!");
-                request.getRequestDispatcher("login.jsp").forward(request,response);
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+//        ResultSet resultSet;
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//        System.out.println(username+password);
+//        PrintWriter writer = response.getWriter();
+//        String sql = "select * from usertable where username=? and password=?";
+//        try {
+//            PreparedStatement pre = con.prepareStatement(sql);
+//            pre.setString(1, username);
+//            pre.setString(2, password);
+//            resultSet = pre.executeQuery();
+//            if (resultSet.next()) {
+//                writer.println("Login Success!");
+//                writer.println(resultSet.getString("username"));
+//                writer.println(resultSet.getString("password"));
+//                request.setAttribute("Id",resultSet.getInt("id"));
+//                request.setAttribute("Username",resultSet.getString("username"));
+//                request.setAttribute("Password",resultSet.getString("password"));
+//                request.setAttribute("Email",resultSet.getString("email"));
+//                request.setAttribute("Gender",resultSet.getString("gender"));
+//                request.setAttribute("Birthdate",resultSet.getDate("birthdate"));
+//                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
+//            } else {
+//                writer.println("Login Fail!");
+//                writer.println("The account number or password you entered is wrong");
+//                request.setAttribute("message","Usename or Password Error!!!");
+//                request.getRequestDispatcher("login.jsp").forward(request,response);
+//            }
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
     }
 
 //    @Override
