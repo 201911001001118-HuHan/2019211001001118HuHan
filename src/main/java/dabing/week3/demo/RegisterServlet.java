@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -59,6 +59,7 @@ public class RegisterServlet extends HttpServlet {
         int resultSet;
         PreparedStatement pre = null;
         Integer id = Integer.parseInt(request.getParameter("id"));
+//        String id=request.getParameter("id");
         String Username=request.getParameter("username");
         String Email=request.getParameter("email");
         String Password=request.getParameter("password");

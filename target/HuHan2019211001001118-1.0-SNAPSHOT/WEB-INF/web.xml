@@ -61,7 +61,18 @@
 <!--        <url-pattern>/updateUser</url-pattern>-->
 <!--    </servlet-mapping>-->
 
-
+<!--    <filter>-->
+<!--        <filter-name>HelloFilter</filter-name>-->
+<!--        <filter-class>com.dabing.filter.HelloFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>HelloFilter</filter-name>-->
+<!--        <url-pattern>/hello</url-pattern>-->
+<!--    </filter-mapping>-->
+      <filter-mapping>
+                <filter-name>HelloFilter</filter-name>
+                <url-pattern>/*</url-pattern>
+            </filter-mapping>
 
 
 
