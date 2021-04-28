@@ -52,6 +52,18 @@
             <url-pattern>/login</url-pattern>
         </servlet-mapping>
 
+<!--    <servlet>-->
+<!--        <servlet-name>UpdateUserServlet</servlet-name>-->
+<!--        <servlet-class>com.dabing.controller.UpdateUserServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>UpdateUserServlet</servlet-name>-->
+<!--        <url-pattern>/updateUser</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+
+
+
 
     <listener>
         <listener-class>com.dabing.week6.demo.JDBCServletContext</listener-class>

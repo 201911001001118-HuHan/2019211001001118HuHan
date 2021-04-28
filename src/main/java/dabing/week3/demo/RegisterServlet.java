@@ -1,17 +1,12 @@
 package dabing.week3.demo;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
+
 import javax.servlet.ServletException;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.Writer;
 import java.sql.*;
 
 @WebServlet(
@@ -63,7 +58,7 @@ public class RegisterServlet extends HttpServlet {
     public void add(HttpServletRequest request,HttpServletResponse response) {
         int resultSet;
         PreparedStatement pre = null;
-        String Id=request.getParameter("id");
+        Integer id = Integer.parseInt(request.getParameter("id"));
         String Username=request.getParameter("username");
         String Email=request.getParameter("email");
         String Password=request.getParameter("password");
@@ -72,7 +67,7 @@ public class RegisterServlet extends HttpServlet {
         String sql = "insert into usertable(id,username,email,gender,birthdate,password) values(?,?,?,?,?,?) " ;
         try {
             pre = con.prepareStatement(sql);
-            pre.setString(1,Id);
+            pre.setInt(1,id);
             pre.setString(2,Username);
             pre.setString(3,Email);
             pre.setString(4,Gender);

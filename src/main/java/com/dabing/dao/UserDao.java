@@ -1,7 +1,6 @@
 package com.dabing.dao;
 
 import com.dabing.model.User;
-
 import java.sql.Connection;
 import java.sql.*;
 import java.sql.SQLException;
@@ -13,24 +12,26 @@ public class UserDao implements IUserDao{
     public boolean saveUser(Connection con, User user) throws SQLException {
         String sql = "insert into usertable(id,username,email,gender,birthdate,password) values(?,?,?,?,?,?) " ;
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1, user.getUsername());
-        st.setString(2, user.getEmail());
-        st.setString(3, user.getGender());
-        st.setDate(4, (java.sql.Date) user.getBirthDate());
-        st.setString(5, user.getPassword());
-        ResultSet rs = st.executeQuery();
-        if(rs.next()){
-            user = new User();
-            user.setId(rs.getInt("id"));
-            user.setUsername(rs.getString("username"));
-            user.setEmail(rs.getString("email"));
-            user.setGender(rs.getString("gender"));
-            user.setBirthDate(rs.getDate("birthdate"));
-            user.setPassword(rs.getString("password"));
-            return true;
-        }else{
-            return false;
-        }
+        st.executeUpdate();
+        st.setInt(1,user.getId());
+        st.setString(2, user.getUsername());
+        st.setString(3, user.getEmail());
+        st.setString(4, user.getGender());
+        st.setDate(5, (java.sql.Date) user.getBirthDate());
+        st.setString(6, user.getPassword());
+        return true;
+//        ResultSet rs = st.executeQuery();
+//        if(rs.next()){
+//            user = new User();
+//            user.setId(rs.getInt("id"));
+//            user.setUsername(rs.getString("username"));
+//            user.setEmail(rs.getString("email"));
+//            user.setGender(rs.getString("gender"));
+//            user.setBirthDate(rs.getDate("birthdate"));
+//            user.setPassword(rs.getString("password"));
+//        }else{
+//            return false;
+//        }
     }
 
     @Override
@@ -38,41 +39,42 @@ public class UserDao implements IUserDao{
         String sql="delete from usertable where id=?";
         PreparedStatement st=con.prepareStatement(sql);
         st.setInt(1,user.getId());
-        ResultSet rs=st.executeQuery();
-        if(rs.next()){
-            user = new User();
-            user.setId(rs.getInt("id"));
-            user.setUsername(rs.getString("username"));
-            user.setEmail(rs.getString("email"));
-            user.setGender(rs.getString("gender"));
-            user.setBirthDate(rs.getDate("birthdate"));
-            user.setPassword(rs.getString("password"));
-        }
-        return 0;
+        return st.executeUpdate();
+//        ResultSet rs=st.executeQuery();
+//        if(rs.next()){
+//            user = new User();
+//            user.setId(rs.getInt("id"));
+//            user.setUsername(rs.getString("username"));
+//            user.setEmail(rs.getString("email"));
+//            user.setGender(rs.getString("gender"));
+//            user.setBirthDate(rs.getDate("birthdate"));
+//            user.setPassword(rs.getString("password"));
+//        }
     }
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        String sql="update usertable set id=?,username=?,email=?,gender=?,birthdate=?,password=? where id=?";
+        String sql="update usertable set username=?,email=?,gender=?,birthdate=?,password=? where id=?";
         PreparedStatement st=con.prepareStatement(sql);
-        st.setInt(1,user.getId());
-        st.setString(2, user.getUsername());
-        st.setString(3, user.getEmail());
-        st.setString(4, user.getGender());
-        st.setDate(5, (java.sql.Date) user.getBirthDate());
-        st.setString(6, user.getPassword());
-        st.setInt(7,user.getId());
-        ResultSet rs=st.executeQuery();
-        if(rs.next()){
-            user = new User();
-            user.setId(rs.getInt("id"));
-            user.setUsername(rs.getString("username"));
-            user.setEmail(rs.getString("email"));
-            user.setGender(rs.getString("gender"));
-            user.setBirthDate(rs.getDate("birthdate"));
-            user.setPassword(rs.getString("password"));
-        }
-        return 0;
+        st.setString(1, user.getUsername());
+        st.setString(2, user.getEmail());
+        st.setString(3, user.getGender());
+        st.setDate(4, (java.sql.Date) user.getBirthDate());
+        st.setString(5, user.getPassword());
+        st.setInt(6,user.getId());
+        return st.executeUpdate();
+
+//        ResultSet rs=st.executeQuery();
+//        if(rs.next()){
+//            user = new User();
+//            user.setId(rs.getInt("id"));
+//            user.setUsername(rs.getString("username"));
+//            user.setEmail(rs.getString("email"));
+//            user.setGender(rs.getString("gender"));
+//            user.setBirthDate(rs.getDate("birthdate"));
+//            user.setPassword(rs.getString("password"));
+//        }
+//        return 0;
     }
 
     @Override
