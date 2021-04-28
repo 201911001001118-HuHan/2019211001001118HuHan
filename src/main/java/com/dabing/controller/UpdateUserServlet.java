@@ -32,7 +32,7 @@ public class UpdateUserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String gender = request.getParameter("gender");
-//        Date birthDate = Date.valueOf(request.getParameter("birthDate"));
+        Date birthDate = Date.valueOf(request.getParameter("birthdate"));
         String password = request.getParameter("password");
         User user =new User();
         user.setId(id);
@@ -40,7 +40,7 @@ public class UpdateUserServlet extends HttpServlet {
         user.setEmail(email);
         user.setGender(gender);
         user.setPassword(password);
-//        user.setBirthDate(birthDate);
+        user.setBirthDate(birthDate);
 //        SimpleDateFormat num = new SimpleDateFormat();
 //        Date birthDate = null;
 //        try {

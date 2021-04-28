@@ -8,15 +8,15 @@ public class User {
     private  String username;
     private  String email ;
     private  String gender ;
-    private  Date birthDate ;
+    private  Date birthdate ;
     private  String password;
 
-    public User(int id, String username, String email, String gender, Date birthDate, String password) {
+    public User(int id, String username, String email, String gender, Date birthdate, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.gender = gender;
-        this.birthDate = birthDate;
+        this.birthdate = birthdate;
         this.password = password;
     }
 
@@ -41,11 +41,11 @@ public class User {
     }
 
     public Date getBirthDate() {
-        return birthDate;
+        return birthdate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthDate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public void setGender(String gender) {
@@ -81,7 +81,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
-                ", birthDate=" + birthDate +
+                ", birthdate=" + birthdate +
                 ", password='" + password + '\'' +
                 '}';
     }
