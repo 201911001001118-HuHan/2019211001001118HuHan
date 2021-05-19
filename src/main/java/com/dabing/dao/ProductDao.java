@@ -5,6 +5,7 @@ import com.dabing.model.Product;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -29,18 +30,47 @@ public class ProductDao implements  IProductDao{
     }
 
     @Override
-    public int delete(Integer productId, Connection con) {
-        return 0;
+    public int delete(Integer productId, Connection con) throws SQLException {
+        String sql = "DELETE FROM product WHERE productId=?";
+        PreparedStatement ps;
+        ps = con.prepareStatement(sql);
+        ps.setInt(1, productId);
+        return ps.executeUpdate();
     }
 
     @Override
-    public int update(Product instance, Connection con) {
-        return 0;
+    public int update(Product instance, Connection con) throws SQLException {
+        String sql = "UPDATE product SET productName=?,productDescription=?,picture=?,price=?,categoryId=? WHERE productId=?";
+        PreparedStatement ps;
+        ps = con.prepareStatement(sql);
+        ps.setString(1, instance.getProductName());
+        ps.setString(2, instance.getProductDescription());
+        ps.setBinaryStream(3, instance.getPicture());
+        ps.setDouble(4, instance.getPrice());
+        ps.setInt(5,instance.getCategoryId());
+        ps.setInt(6, instance.getProductId());
+        return  ps.executeUpdate();
     }
 
     @Override
-    public Product findById(Integer productId, Connection con) {
-        return null;
+    public Product findById(Integer productId, Connection con) throws SQLException {
+        String sql = "SELECT * FROM product WHERE productId = ? ";
+        PreparedStatement ps;
+        ps = con.prepareStatement(sql);
+        ps.setInt(1, productId);
+        ResultSet resultSet = ps.executeQuery();
+        Product product = null;
+        if(resultSet.next())
+        {
+            product = new Product();
+            product.setProductId(productId);
+            product.setProductName(resultSet.getString("productName"));
+            product.setProductDescription(resultSet.getString("productDescription"));
+            product.setPicture(resultSet.getBinaryStream("picture"));
+            product.setCategoryId(resultSet.getInt("categoryId"));
+            product.setPrice(resultSet.getDouble("price"));
+        }
+        return product;
     }
 
     @Override
