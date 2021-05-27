@@ -43,7 +43,6 @@
 
 							<td class="total"><strong>Description</strong></td>
 							<td></td>
-							
 						</tr>
 						</thead><tbody>
 					<!-- loop_start -->

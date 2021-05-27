@@ -39,7 +39,6 @@ public class ShopServlet extends HomeServlet{
                 productList = productDao.findAll(con);
                 request.setAttribute("productList",productList);
             }else {
-
                 int catId = Integer.parseInt(request.getParameter("categoryId"));
                 productList = productDao.findByCategoryId(catId,con);
                 request.setAttribute("productList",productList);

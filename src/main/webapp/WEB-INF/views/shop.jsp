@@ -28,7 +28,6 @@
 							</div>
 							</c:forEach>
 							<!-- Loop_end -->
-						
 						</div><!--/category-productsr-->
 									
 						<div class="price-range"><!--price-range-->

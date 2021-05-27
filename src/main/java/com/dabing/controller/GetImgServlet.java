@@ -18,7 +18,6 @@ public class GetImgServlet extends HttpServlet {
         if(request.getParameter("id") != null){
             id=Integer.parseInt(request.getParameter("id"));
         }
-
         try {
             byte[] imgByte = new byte[0];
             imgByte=dao.getPictureById(id,con);
