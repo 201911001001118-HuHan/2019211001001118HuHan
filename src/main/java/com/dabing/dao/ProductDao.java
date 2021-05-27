@@ -148,11 +148,11 @@ public class ProductDao implements  IProductDao{
         }
         return productList;
     }
-    public byte[] getPictureById(int productId, Connection con) throws SQLException {
+    public byte[] getPictureById(int ProductId, Connection con) throws SQLException {
         byte[] imgByte = null;
-        String sql = "select picture from Product where productId=?";
+        String sql = "select picture from Product where ProductId=?";
         PreparedStatement pt = con.prepareStatement(sql);
-        pt.setInt(1, productId);
+        pt.setInt(1, ProductId);
         ResultSet rs = pt.executeQuery();
         while (rs.next()) {
             Blob blob = rs.getBlob("picture");
