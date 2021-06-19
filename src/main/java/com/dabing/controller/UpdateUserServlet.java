@@ -19,13 +19,17 @@ public class UpdateUserServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+        super.init();
         con = (Connection)getServletContext().getAttribute("con");
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/views/updateUserView.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/views/updateUser.jsp").forward(request,response);
+//        String path = "/WEB-INF/views/admin/updateUserView.jsp";
+//        request.getRequestDispatcher(path).forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer id = Integer.parseInt(request.getParameter("id"));
@@ -50,16 +54,16 @@ public class UpdateUserServlet extends HttpServlet {
 //        }
         UserDao userDao = new UserDao();
         try {
-            userDao.updateUser(con,user);
-            HttpSession session=request.getSession();
-            session.setMaxInactiveInterval(30);
-            session.setAttribute("user",user);
+            int a = userDao.updateUser(con,user);
+//            HttpSession session=request.getSession();
+//            session.setMaxInactiveInterval(30);
+//            session.setAttribute("user",user);
+            if (a != 0) {
+                request.getRequestDispatcher("accountDetails.jsp").forward(request,response);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("accountDetails").forward(request,response);
+
     }
-
-
-
 }

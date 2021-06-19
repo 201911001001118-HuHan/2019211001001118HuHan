@@ -1,6 +1,5 @@
 <%@ page import="com.dabing.model.User" %>
 <%@ page import="java.util.List" %>
- 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
 <section id="form"><!--form-->

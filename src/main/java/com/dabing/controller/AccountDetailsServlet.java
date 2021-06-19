@@ -18,7 +18,6 @@ import java.util.List;
 
 @WebServlet(name = "AccountDetailsServlet",value = "/accountDetails")
 public class AccountDetailsServlet extends HttpServlet {
-    private static final long serialVersionUID = 5812011973673550742L;
     private Connection con;
 
     @Override

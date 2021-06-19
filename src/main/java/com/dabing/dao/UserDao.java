@@ -62,7 +62,8 @@ public class UserDao implements IUserDao{
         st.setDate(4, user.getBirthDate());
         st.setString(5, user.getPassword());
         st.setInt(6,user.getId());
-        return st.executeUpdate();
+        int n = st.executeUpdate();
+        return n;
 
 //        ResultSet rs=st.executeQuery();
 //        if(rs.next()){
